@@ -1,0 +1,111 @@
+/* Import Google Font for Fancy Text */
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+/* Navbar */
+.navbar {
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(243, 242, 242, 0.1);
+  height: 60px; /* Reduced height */
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Brand Text */
+.brand-text {
+  font-family: "Pacifico", cursive;
+  font-size: 24px;
+  color: #1b334c; /* Highlighted color */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-left: 20px;
+}
+
+.nav-link {
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+/* Profile Icon and Dropdown */
+.profile-dropdown {
+  position: relative;
+  margin-left: 20px;
+}
+
+.profile-icon {
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.profile-icon:hover {
+  color: #007bff;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none; /* Hide links on mobile */
+  }
+
+  .profile-dropdown {
+    margin-left: 0;
+  }
+}

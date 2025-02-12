@@ -1,0 +1,124 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+  }
+  
+  .user-homepage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Navigation Header */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #fff;
+  }
+  
+  /* Search Bar */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 5px 10px;
+    width: 40%;
+  }
+  
+  .search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  .search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    font-size: 18px;
+  }
+  
+  /* Icons */
+  .navbar-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .icon {
+    position: relative;
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+    transition: color 0.3s ease;
+  }
+  
+  .icon:hover {
+    color: #007bff;
+  }
+  
+  .icon-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+  }
+  
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .main-content h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .main-content p {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px;
+    }
+  
+    .search-bar {
+      width: 100%;
+      margin: 10px 0;
+    }
+  
+    .navbar-icons {
+      gap: 15px;
+    }
+  }

@@ -1,57 +1,90 @@
-// src/pages/Auth/Login.jsx
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+//  // src/pages/Auth/Login.jsx
+
+
+
+
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
     try {
-      const response = await axios.post(
-        'http://localhost:5000/api/users/auth',
-        { email, password },
-        { withCredentials: true }
-      );
-      const token = response.data.token;
-      localStorage.setItem('authToken', token); // Store token in localStorage
-      setMessage('Login successful!');
-      navigate('/profile');
-    } catch (error) {
-      console.error(error);
-      setMessage('Login failed. Please try again.');
+      const response = await fetch("http://localhost:5000/api/users/auth", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || "Login failed");
+      }
+      
+      // Store user info in local storage
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      
+      // Redirect to user homepage
+      if (data.isAdmin) {
+        navigate("/admindashboard");
+      } else {
+        navigate("/userhomepage");
+      }
+    } catch (err) {
+      setError(err.message);
     }
   };
 
   return (
-    <div className="container">
+    <div className="login-container">
       <h2>Login</h2>
+      {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
           <input
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
             required
           />
         </div>
-        <div>
-          <label>Password:</label>
+
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
           <input
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
             required
           />
         </div>
-        <button type="submit">Login</button>
+
+        <button type="submit" className="login-btn">LOGIN</button>
       </form>
-      {message && <p>{message}</p>}
     </div>
   );
 };
