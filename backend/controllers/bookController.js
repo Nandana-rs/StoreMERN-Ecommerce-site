@@ -146,17 +146,78 @@ const getBookById = asyncHandler(async (req, res) => {
 // @desc    Update a book
 // @route   PUT /api/books/:id
 // @access  Admin
+// const updateBook = asyncHandler(async (req, res) => {
+//   const book = await Book.findById(req.params.id);
+
+//   if (!book) {
+//     res.status(404);
+//     throw new Error("Book not found");
+//   }
+
+//   Object.assign(book, req.body);
+//   const updatedBook = await book.save();
+//   res.json(updatedBook);
+// });
+// @desc    Update a book
+// @route   PUT /api/books/:id
+// @access  Admin
 const updateBook = asyncHandler(async (req, res) => {
-  const book = await Book.findById(req.params.id);
+  upload(req, res, async (err) => {
+    if (err) {
+      console.error('Multer Error:', err);
+      return res.status(400).json({ message: "Error uploading image", error: err.message });
+    }
 
-  if (!book) {
-    res.status(404);
-    throw new Error("Book not found");
-  }
+    try {
+      const book = await Book.findById(req.params.id);
+      if (!book) {
+        res.status(404);
+        throw new Error("Book not found");
+      }
 
-  Object.assign(book, req.body);
-  const updatedBook = await book.save();
-  res.json(updatedBook);
+      // Update regular fields
+      const {
+        title,
+        author,
+        price,
+        category,
+        format,
+        ISBN,
+        publisher,
+        language,
+        publicationDate,
+        pages,
+        stock,
+        description,
+        discountPrice,
+      } = req.body;
+
+      if (title) book.title = title;
+      if (author) book.author = author;
+      if (price) book.price = price;
+      if (category) book.category = category;
+      if (format) book.format = format;
+      if (ISBN) book.ISBN = ISBN;
+      if (publisher) book.publisher = publisher;
+      if (language) book.language = language;
+      if (publicationDate) book.publicationDate = publicationDate;
+      if (pages) book.pages = pages;
+      if (stock) book.stock = stock;
+      if (description) book.description = description;
+      if (discountPrice) book.discountPrice = discountPrice;
+
+      // Update cover image if a new file is uploaded
+      if (req.file) {
+        book.coverImage = `/uploads/${req.file.filename}`;
+      }
+
+      const updatedBook = await book.save();
+      res.json(updatedBook);
+    } catch (error) {
+      console.error('Error updating book:', error);
+      res.status(500).json({ message: "Server error", error: error.message });
+    }
+  });
 });
 
 // @desc    Delete a book

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaSearch, FaSignOutAlt, FaUsers, FaPlus, FaList, FaCog } from "react-icons/fa"; // Icons
 import AddBookForm from "./AddBookForm.jsx"; // Import the AddBookForm component
+import AdminViewBook from "./AdminViewBook.jsx"; // Import the new component
+import CrudBook from "./CrudBook";
+import EditBook from "./EditBook";
 import "./admindashboard.css"; // Import the CSS file
 
 const AdminDashboard = () => {
@@ -84,6 +87,9 @@ const AdminDashboard = () => {
         
         {/* Conditionally render AddBookForm component */}
         {activeOption === "Add Books" && <AddBookForm />}
+        {activeOption === "View Books" && <AdminViewBook />}
+        {activeOption === "Manage Books" && <CrudBook />}
+        {activeOption === "Manage Books/edit/:id" && <EditBook />}
       </div>
     </div>
   );
