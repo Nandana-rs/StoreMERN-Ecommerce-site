@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaSearch, FaSignOutAlt, FaUsers, FaPlus, FaList, FaCog } from "react-icons/fa"; // Icons
+import AddBookForm from "./AddBookForm.jsx"; // Import the AddBookForm component
 import "./admindashboard.css"; // Import the CSS file
 
 const AdminDashboard = () => {
@@ -49,16 +50,23 @@ const AdminDashboard = () => {
             <FaUsers /> Manage Users
           </li>
           <li
-            className={activeOption === "Add Products" ? "active" : ""}
-            onClick={() => handleSidebarClick("Add Products")}
+            className={activeOption === "Add Books" ? "active" : ""}
+            onClick={() => handleSidebarClick("Add Books")}
           >
-            <FaPlus /> Add Products
+            <FaPlus /> Add Books
           </li>
           <li
-            className={activeOption === "View Products" ? "active" : ""}
-            onClick={() => handleSidebarClick("View Products")}
+            className={activeOption === "View Books" ? "active" : ""}
+            onClick={() => handleSidebarClick("View Books")}
           >
-            <FaList /> View Products
+            <FaList /> View Books
+          </li>
+
+          <li
+            className={activeOption === "Manage Books" ? "active" : ""}
+            onClick={() => handleSidebarClick("Manage Books")}
+          >
+            <FaList /> Manage Books
           </li>
           <li
             className={activeOption === "Settings" ? "active" : ""}
@@ -73,7 +81,9 @@ const AdminDashboard = () => {
       <div className="main-content">
         <h1>{activeOption}</h1>
         <p>This is the {activeOption.toLowerCase()} section.</p>
-        {/* Add your dynamic content here based on the active option */}
+        
+        {/* Conditionally render AddBookForm component */}
+        {activeOption === "Add Books" && <AddBookForm />}
       </div>
     </div>
   );

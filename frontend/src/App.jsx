@@ -14,8 +14,8 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <Router>
-      <ToastContainer />
-      <Navigation />
+      {/* <ToastContainer /> */}
+      {/* <Navigation /> */}
       <main className="py-3">
         <Routes>
           <Route path="/" element={<Home />} />
