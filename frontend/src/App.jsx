@@ -5,6 +5,11 @@ import Home from "./pages/Home.jsx";
 import Login from "./pages/Auth/Login.jsx";
 import Register from "./pages/Auth/Register.jsx";
 import UserHomepage from "./pages/userhomepage.jsx";
+import BookList from "./pages/BookList.jsx";
+import BookDetails from "./pages/BookDetails";
+import Wishlist from "./pages/Wishlist.jsx";
+import Cart from "./pages/Cart.jsx";     
+
 import AdminDashboard from "./pages/admindashboard.jsx";
 import Profile from "./pages/Profile.jsx";
 import ProtectedRoute from "./utils/protectedRoute.jsx";
@@ -22,6 +27,10 @@ function App() {
           <Route path="/registration" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/userhomepage" element={<UserHomepage />} />
+          <Route path="/products" element={<BookList />} />
+          <Route path="/products/:id" element={<BookDetails />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/admindashboard" element={<AdminDashboard/>}/>
          
           <Route 

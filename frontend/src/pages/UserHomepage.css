@@ -1,124 +1,360 @@
-/* General Styles */
+/* -------------------------------------------------------
+   1. Global Styles & Typography
+-------------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-  }
-  
-  .user-homepage {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  /* Navigation Header */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .navbar-brand h2 {
-    margin: 0;
-    font-size: 24px;
-    color: #fff;
-  }
-  
-  /* Search Bar */
-  .search-bar {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 20px;
-    padding: 5px 10px;
-    width: 40%;
-  }
-  
-  .search-bar input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 5px;
-    font-size: 16px;
-  }
-  
-  .search-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #333;
-    font-size: 18px;
-  }
-  
-  /* Icons */
-  .navbar-icons {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .icon {
-    position: relative;
-    cursor: pointer;
-    color: #fff;
-    font-size: 20px;
-    transition: color 0.3s ease;
-  }
-  
-  .icon:hover {
-    color: #007bff;
-  }
-  
-  .icon-badge {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 12px;
-  }
-  
-  /* Main Content */
-  .main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .main-content h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-  
-  .main-content p {
-    font-size: 18px;
-    color: #666;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 10px;
-    }
-  
-    .search-bar {
-      width: 100%;
-      margin: 10px 0;
-    }
-  
-    .navbar-icons {
-      gap: 15px;
-    }
-  }
+  font-family: "Quicksand", sans-serif;
+  background: #fafafa;
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* -------------------------------------------------------
+   2. Navbar
+-------------------------------------------------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #004c59, #046e7d);
+  color: #fff;
+}
+
+/* Left Brand Section */
+.navbar-left .logo {
+  font-size: 1.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.navbar-left .logo:hover {
+  color: #ffc107;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.2rem 0.8rem;
+  margin: 0 2rem;
+  flex: 1;
+  max-width: 400px;
+}
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  padding: 0.6rem 0.5rem;
+  border-radius: 999px;
+}
+.search-bar button {
+  background: #ffc107;
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  transition: background 0.3s ease;
+}
+.search-bar button:hover {
+  background: #ffb306;
+}
+
+/* Icons Section */
+.navbar-right {
+  display: flex;
+  gap: 1.5rem;
+}
+.icon {
+  position: relative;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.icon:hover {
+  color: #ffc107;
+}
+.icon-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: #e94560;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+/* Navbar Search Form */
+/* Search Bar Container */
+/* Search Bar Container */
+.navbar-search-form {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5; /* Light background */
+  border-radius: 25px; /* Fully rounded corners */
+  padding: 5px 15px; /* Spacing inside the search bar */
+  width: 300px; /* Slightly wider for better usability */
+  transition: all 0.3s ease; /* Smooth transitions */
+  border: 1px solid #ddd; /* Subtle border */
+}
+
+/* Hover effect for the search bar */
+.navbar-search-form:hover {
+  background-color: #e9e9e9; /* Slightly darker on hover */
+  border-color: #ccc; /* Darker border on hover */
+}
+
+/* Search Input Field */
+.navbar-search-input {
+  border: none;
+  outline: none;
+  flex: 1; /* Takes up remaining space */
+  padding: 8px;
+  font-size: 14px;
+  background-color: transparent; /* Transparent background */
+  color: #333; /* Text color */
+}
+
+/* Placeholder text styling */
+.navbar-search-input::placeholder {
+  color: #999; /* Light gray placeholder */
+  font-style: italic; /* Italic placeholder text */
+}
+
+/* Search Button */
+.navbar-search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666; /* Icon color */
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect for the search button */
+.navbar-search-button:hover {
+  color: #007bff; /* Blue icon color on hover */
+}
+
+/* Focus effect for the search bar */
+.navbar-search-form:focus-within {
+  background-color: #fff; /* White background when focused */
+  border-color: #007bff; /* Blue border when focused */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3); /* Subtle glow */
+}
+
+
+/* Our Products Link */
+.products-link {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+
+.products-link:hover {
+  color: #ffc107;
+}
+
+/* -------------------------------------------------------
+   3. Hero Section
+-------------------------------------------------------- */
+/* Hero Section */
+.hero {
+  /* Adjust the height to your preference */
+  height: 70vh; 
+  /* Use a background image */
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), /* optional overlay */
+    url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f") 
+    no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff; /* White text for contrast */
+  padding: 2rem;
+}
+
+.hero-text {
+  max-width: 600px;
+  /* Add some text shadow for better readability on the background */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.explore-button {
+  background-color: #e94560;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.explore-button:hover {
+  background-color: #d63751;
+}
+
+
+/* -------------------------------------------------------
+   4. Genres Section
+-------------------------------------------------------- */
+.genres-section {
+  background: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+.genres-section h2 {
+  font-size: 1.8rem;
+  color: #004c59;
+  margin-bottom: 1rem;
+}
+.genres-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.genre-btn {
+  background-color: #ffc107;
+  color: #004c59;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+.genre-btn:hover {
+  background-color: #ffb306;
+}
+
+/* -------------------------------------------------------
+   5. New Arrivals Section
+-------------------------------------------------------- */
+.arrivals-section {
+  background: #eef7f8;
+  padding: 2.5rem 1rem;
+}
+.arrivals-section h2 {
+  color: #004c59;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+.arrivals-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.book-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+.book-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+.book-card h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 0.3rem;
+}
+.book-card p {
+  font-size: 0.95rem;
+  color: #004c59;
+  font-weight: 600;
+}
+
+/* -------------------------------------------------------
+   6. Footer
+-------------------------------------------------------- */
+.footer {
+  background: linear-gradient(135deg, #004c59, #046e7d);
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: auto;
+}
+.footer-content {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.footer-section {
+  min-width: 150px;
+}
+.footer-section h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.footer-section p {
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.footer-section p:hover {
+  color: #ffc107;
+}
+.footer-copy {
+  font-size: 0.85rem;
+  color: #ddd;
+  margin-top: 1rem;
+}

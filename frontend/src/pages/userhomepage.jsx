@@ -1,69 +1,64 @@
-// import React from "react";
-// import { useNavigate } from "react-router-dom";
-
-// const UserHomepage = () => {
-//   const navigate = useNavigate();
-
-//   const handleLogout = () => {
-//     // Remove the token (or session data) from local storage
-//     localStorage.removeItem("authToken");
-
-//     // Redirect to the login page
-//     navigate("/login");
-//   };
-
-//   return (
-//     <div>
-//       {/* Navigation Header */}
-//       <nav style={{ display: "flex", justifyContent: "space-between", padding: "10px", backgroundColor: "#333", color: "#fff" }}>
-//         <h2>BookNest</h2>
-//         <button onClick={handleLogout} style={{ background: "red", color: "white", padding: "5px 10px", border: "none", cursor: "pointer" }}>
-//           Logout
-//         </button>
-//       </nav>
-
-//       {/* Main Content */}
-//       <h1>Welcome to the User Homepage</h1>
-//     </div>
-//   );
-// };
-
-// export default UserHomepage;
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FaSearch, FaHeart, FaShoppingCart, FaSignOutAlt } from "react-icons/fa"; // Icons
-import "./UserHomepage.css"; // Import the CSS file
+import harryPotterImg from "../assets/images/harrypotter.jpg";
+import {
+  FaSearch,
+  FaHeart,
+  FaShoppingCart,
+  FaSignOutAlt,
+} from "react-icons/fa";
+import "./UserHomepage.css"; // Make sure to update the CSS file
 
 const UserHomepage = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Remove the token (or session data) from local storage
     localStorage.removeItem("authToken");
-
-    // Redirect to the login page
     navigate("/login");
+  };
+  // Handler for searching products (dummy handler; update as needed)
+  const handleSearch = (e) => {
+    e.preventDefault();
+    // Implement search functionality here
+    console.log("Searching for products...");
+  };
+
+  // Handler for navigating to 'Our Products' page
+  const goToProducts = () => {
+    navigate("/products"); // Adjust the route if needed
   };
 
   return (
     <div className="user-homepage">
-      {/* Navigation Header */}
+      {/* ========== NAVBAR ========== */}
       <nav className="navbar">
-        <div className="navbar-brand">
-          <h2>BookNest</h2>
+        <div className="navbar-left">
+          <h2 className="logo">BookNest</h2>
         </div>
 
-        {/* Search Bar */}
-        <div className="search-bar">
-          <input type="text" placeholder="Search for books..." />
-          <button className="search-button">
-            <FaSearch />
+         {/* Search Bar */}
+ <form onSubmit={handleSearch} className="navbar-search-form">
+            <input
+              type="text"
+              placeholder="Search products..."
+              className="navbar-search-input"
+            />
+            <button type="submit" className="navbar-search-button">
+              <FaSearch />
+            </button>
+          </form>
+ 
+          {/* Our Products Link */}
+          <button onClick={goToProducts} className="products-link">
+            Our Products
           </button>
-        </div>
+       
 
         {/* Icons */}
-        <div className="navbar-icons">
+        <div className="navbar-right">
+         
+           
           <div className="icon">
             <FaHeart />
             <span className="icon-badge">3</span> {/* Wishlist count */}
@@ -78,11 +73,99 @@ const UserHomepage = () => {
         </div>
       </nav>
 
-      {/* Main Content */}
-      <div className="main-content">
-        <h1>Welcome to BookNest</h1>
-        <p>Explore our collection of books and find your next favorite read!</p>
-      </div>
+      {/* ========== HERO SECTION ========== */}
+      {/* ========== HERO SECTION ========== */}
+      {/* 
+        Instead of an inline image, we use a background image in CSS 
+        for the entire hero section.
+      */}
+      <section className="hero">
+        <div className="hero-text">
+          <h1>Discover Your Next Adventure</h1>
+          <p>Explore our collection of books and find your next favorite read!</p>
+          <button className="explore-button">Explore Now</button>
+        </div>
+      </section>
+
+
+      {/* ========== GENRES SECTION ========== */}
+      <section className="genres-section">
+        <h2>Genres</h2>
+        <div className="genres-grid">
+          <button className="genre-btn">Fiction</button>
+          <button className="genre-btn">Thriller</button>
+          <button className="genre-btn">Tech</button>
+          <button className="genre-btn">Philosophy</button>
+          <button className="genre-btn">Romance</button>
+          <button className="genre-btn">Manga</button>
+        </div>
+      </section>
+
+      {/* ========== NEW ARRIVALS SECTION ========== */}
+      <section className="arrivals-section">
+        <h2>New Arrivals</h2>
+        <div className="arrivals-grid">
+          {/* Example book cards - replace with dynamic data */}
+          <div className="book-card">
+  <img
+    src={harryPotterImg}
+    alt="Harry Potter"
+  />
+  <h3>Harry Potter</h3>
+  <p>Rs. 499</p>
+</div>
+
+          <div className="book-card">
+            <img
+              src="https://images-na.ssl-images-amazon.com/images/I/81bsw6fnUiL.jpg"
+              alt="The Fault in Our Stars"
+            />
+            <h3>The Fault in Our Stars</h3>
+            <p>Rs. 350</p>
+          </div>
+          <div className="book-card">
+            <img
+              src="https://images-na.ssl-images-amazon.com/images/I/71aLultW5EL.jpg"
+              alt="The Stranger"
+            />
+            <h3>The Stranger</h3>
+            <p>Rs. 280</p>
+          </div>
+          <div className="book-card">
+            <img
+              src="https://images-na.ssl-images-amazon.com/images/I/61Iz2yy2CKL.jpg"
+              alt="To Kill a Mockingbird"
+            />
+            <h3>To Kill a Mockingbird</h3>
+            <p>Rs. 400</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== FOOTER ========== */}
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3>About</h3>
+            <p>Contact us</p>
+            <p>Careers</p>
+            <p>Blog</p>
+          </div>
+          <div className="footer-section">
+            <h3>Help</h3>
+            <p>Payments</p>
+            <p>Shipping</p>
+            <p>FAQ</p>
+          </div>
+          <div className="footer-section">
+            <h3>Socials</h3>
+            <p>LinkedIn</p>
+            <p>Twitter</p>
+            <p>Instagram</p>
+          </div>
+        </div>
+        <p className="footer-copy">&copy; {new Date().getFullYear()} BookNest. All rights reserved.</p>
+      </footer>
     </div>
   );
 };
